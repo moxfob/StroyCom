@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "scss/base.css" %}">
+    <link rel="stylesheet" href="{% static "scss/index.css" %}">
+    <link rel="stylesheet" href="{% static "scss/about.css" %}">
+    <link rel="stylesheet" href="{% static "scss/services.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>{% block title %}СтройКом.ru{% endblock title %}</title>
+</head>
+<body>
+    <header>
+        <img src="#" alt="Logo">
+        <nav>
+            <a href={% url "index" %}>Главная</a>
+            <a href={% url "about" %}>О Компании</a>
+            <a href={% url "services" %}>Все услуги</a>
+        </nav>
+        <div class="contacts">
+            <a href="https://www.whatsapp.com/?lang=ru">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://telegram.org/">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+        </div>
+    </header>
+
+    {% block content %}{% endblock content %}
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>СтройКом</h3>
+                <p>Ваш надежный партнер в строительстве и ремонте. Качество, проверенное временем.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Услуги</h4>
+                <ul>
+                    <li><a href="{% url "services" %}">Ремонт под ключ</a></li>
+                    <li><a href="{% url "services" %}">Отделочные работы</a></li>
+                    <li><a href="{% url "services" %}">Электромонтаж</a></li>
+                    <li><a href="{% url "services" %}">Сантехника</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@stroikom.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Строителей, 15</p>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Режим работы</h4>
+                <p>Пн-Пт: 9:00 - 18:00</p>
+                <p>Сб: 10:00 - 16:00</p>
+                <p>Вс: Выходной</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 СтройКом. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="{% static "js/about.js" %}"></script>
+    <script src="{% static "js/services.js" %}"></script>
+</body>
+</html>

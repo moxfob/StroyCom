@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Услуги и цены - СтройКом{% endblock title %}
+
+{% block content %}
+<section class="services-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Наши услуги и цены</h1>
+            <p class="page-subtitle">Полный перечень строительных услуг с актуальными ценами</p>
+            <div class="services-stats">
+                <span class="stat-item">Всего услуг: <strong>{{ services_count }}</strong></span>
+                <span class="stat-item">Обновлено: {% now "d.m.Y" %}</span>
+            </div>
+        </div>
+
+        <div class="services-filters">
+            <button class="filter-btn active" data-filter="all">Все услуги</button>
+            {% for category_key, category_display in category_choices %}
+                <button class="filter-btn" data-filter="{{ category_key }}">{{ category_display }}</button>
+            {% endfor %}
+        </div>
+
+        {% for category, services_list in categories.items %}
+        <div class="category-section" data-category="{{ category }}">
+            <h2 class="category-title">
+                <i class="fas 
+                    {% if category == 'construction' %}fa-building
+                    {% elif category == 'repair' %}fa-tools
+                    {% elif category == 'design' %}fa-pencil-ruler
+                    {% elif category == 'enginering' %}fa-cogs
+                    {% else %}fa-clipboard-list{% endif %}
+                "></i>
+                {{ services_list.0.get_category_display }}
+            </h2>
+            
+            <div class="services-table-container">
+                <table class="services-table">
+                    <thead>
+                        <tr>
+                            <th>Услуга</th>
+                            <th>Описание</th>
+                            <th>Стоимость</th>
+                            <th>Срок выполнения</th>
+                            <th>Доступность</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services_list %}
+                        <tr class="service-row">
+                            <td class="service-name">
+                                <strong>{{ service.name }}</strong>
+                            </td>
+                            <td class="service-description">
+                                {{ service.description }}
+                            </td>
+                            <td class="service-price">
+                                <span class="price-amount">{{ service.price }}</span>
+                                <span class="price-unit">₽/{{ service.unit }}</span>
+                            </td>
+                            <td class="service-duration">
+                                {{ service.duration|default:"По договоренности" }}
+                            </td>
+                            <td class="service-availability">
+                                    <span class="availability-badge available">
+                                        {{ service.is_aviable }}
+                                    </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% empty %}
+        <div class="no-services">
+            <i class="fas fa-clipboard-list"></i>
+            <h3>Услуги временно недоступны</h3>
+            <p>Пожалуйста, свяжитесь с нами для уточнения информации об услугах</p>
+            <a href="{% url 'index' %}" class="contact-btn">Связаться с нами</a>
+        </div>
+        {% endfor %}
+
+        <div class="services-info">
+            <div class="info-card">
+                <div class="info-icon">💡</div>
+                <div class="info-content">
+                    <h4>Ориентировочные цены</h4>
+                    <p>Указанные цены являются базовыми. Точная стоимость рассчитывается индивидуально после осмотра объекта.</p>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">⏱️</div>
+                <div class="info-content">
+                    <h4>Сроки выполнения</h4>
+                    <p>Сроки могут варироваться в зависимости от сложности работ и объема объекта.</p>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">📞</div>
+                <div class="info-content">
+                    <h4>Консультация</h4>
+                    <p>Для точного расчета стоимости и сроков свяжитесь с нашими специалистами.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-cta">
+            <h3>Готовы начать сотрудничество?</h3>
+            <p>Свяжитесь с нами для бесплатной консультации и расчета стоимости вашего проекта</p>
+            <div class="cta-buttons">
+                <a href="tel:+79999999999" class="cta-btn primary">
+                    <i class="fas fa-phone"></i>
+                    Позвонить
+                </a>
+                <a href="https://wa.me/79999999999" class="cta-btn secondary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

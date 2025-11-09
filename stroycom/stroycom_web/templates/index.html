@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+<title>{% block title %}СтройКом.ru - Главная{% endblock title %}</title>
+<link rel="stylesheet" href="{% static "scss/index.css" %}">
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Профессиональный ремонт и отделка под ключ</h1>
+            <p>Превращаем ваши мечты о идеальном доме в реальность. 15 лет опыта, гарантия качества и фиксированные цены.</p>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-text">лет на рынке</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-text">выполненных проектов</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-text">довольных клиентов</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>Наши услуги</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Ремонт под ключ</h3>
+                <p>Полный цикл работ от черновой отделки до сдачи объекта</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Дизайн интерьера</h3>
+                <p>Создаем уникальные и функциональные пространства</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Электромонтаж</h3>
+                <p>Профессиональный монтаж электрических систем</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Сантехнические работы</h3>
+                <p>Установка и замена сантехнического оборудования</p>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
