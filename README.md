@@ -1,4 +1,4 @@
-Конечно! Вот лаконичный и практичный README.md для вашего проекта StroyCom:
+
 
 ```markdown
 # StroyCom
